@@ -4,7 +4,7 @@
     "Version": "1.0.0",
     "Description": "Sell your items quickly.",
     "UniqueID": "AlejandroAkbal.QuickSell",
-    "EntryDll": "Quick_Sell.dll",
+    "EntryDll": "Quick Sell.dll",
     "MinimumApiVersion": "3.0.0",
     "UpdateKeys": []
 }
