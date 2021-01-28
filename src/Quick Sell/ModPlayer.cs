@@ -46,16 +46,16 @@ namespace Quick_Sell
             switch (currentMenu)
             {
                 // Chests
-                case MenuWithInventory menu:
-                    currentItem = Game1.player.CursorSlotItem ?? menu.heldItem ?? menu.hoveredItem;
-                    break;
+                //case MenuWithInventory menu:
+                //    currentItem = Game1.player.CursorSlotItem ?? menu.heldItem ?? menu.hoveredItem;
+                //    break;
+
+                //case ProfileMenu menu:
+                //    currentItem = menu.hoveredItem;
+                //    break;
 
                 case InventoryPage menu:
                     currentItem = Game1.player.CursorSlotItem ?? this.Helper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
-                    break;
-
-                case ProfileMenu menu:
-                    currentItem = menu.hoveredItem;
                     break;
 
                 default:
