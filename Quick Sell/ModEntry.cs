@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
 using StardewValley;
 
 namespace Quick_Sell
@@ -11,14 +8,21 @@ namespace Quick_Sell
     public class ModEntry : Mod
     {
         /*********
+        ** Properties
+        *********/
+
+        /// <summary>The mod configuration from the player.</summary>
+        private ModConfig Config;
+
+        /*********
         ** Public methods
         *********/
+
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
-            helper.Events.Input.ButtonPressed += this.OnButtonPressed;
-        }
+            this.Config = this.Helper.ReadConfig<ModConfig>();
 
 
         /*********
