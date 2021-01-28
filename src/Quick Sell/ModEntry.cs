@@ -53,7 +53,8 @@ namespace Quick_Sell
             if (item == null)
                 return;
 
-            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
+
         private static Item GetHeldItem()
         {
             Item heldItem = Game1.player.CurrentItem;
