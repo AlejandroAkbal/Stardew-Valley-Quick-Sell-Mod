@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="ModConfig.cs" />
     <Compile Include="ModEntry.cs" />
+    <Compile Include="ModPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="manifest.json" />
