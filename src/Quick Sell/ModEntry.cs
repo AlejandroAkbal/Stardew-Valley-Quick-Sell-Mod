@@ -55,6 +55,23 @@ namespace Quick_Sell
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
 
+            AddItemToPlayerShippingBin(item);
+
+            RemoveItemFromPlayerInventory(item);
+
+            SendHUDMessageIfMessagesEnabled($"Sent {item.DisplayName} to the shipping bin");
+        }
+
+        private static void AddItemToPlayerShippingBin(Item item)
+        {
+            Game1.getFarm().getShippingBin(Game1.player).Add(item);
+        }
+
+        private static void RemoveItemFromPlayerInventory(Item item)
+        {
+            Game1.player.removeItemFromInventory(item);
+        }
+
         private static Item GetHeldItem()
         {
             Item heldItem = Game1.player.CurrentItem;
