@@ -59,13 +59,12 @@ namespace Quick_Sell
                     break;
 
                 default:
-                    string message = "No menu available!";
+                    string message = "You are not in the inventory!";
 
                     this.Monitor.Log(message, LogLevel.Debug);
 
                     this.Utils.SendHUDMessage(message);
 
-                    // currentItem = this.Helper.Reflection.GetField<Item>(currentMenu, "hoveredItem", required: false).GetValue();
                     break;
             }
 
