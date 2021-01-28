@@ -1,7 +1,6 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
-using StardewValley.Menus;
 
 namespace Quick_Sell
 {
@@ -15,6 +14,9 @@ namespace Quick_Sell
         /// <summary>The mod configuration from the player.</summary>
         private ModConfig Config;
 
+        private ModUtils Utils;
+        private ModPlayer Player;
+
         /*********
         ** Public methods
         *********/
@@ -25,12 +27,12 @@ namespace Quick_Sell
         {
             this.Config = this.Helper.ReadConfig<ModConfig>();
 
+            this.Utils = new ModUtils(this.Config);
+            this.Player = new ModPlayer(helper, this.Config, this.Monitor);
+
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
         }
 
-        /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event data.</param>
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
         {
             if (!Context.IsWorldReady)
@@ -48,80 +50,18 @@ namespace Quick_Sell
 
         private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            Item item = GetHoveredItem();
+            Item item = Player.GetHoveredItem();
 
             if (item == null)
                 return;
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
 
-            AddItemToPlayerShippingBin(item);
+            this.Player.AddItemToPlayerShippingBin(item);
 
-            RemoveItemFromPlayerInventory(item);
+            this.Player.RemoveItemFromPlayerInventory(item);
 
-            SendHUDMessageIfMessagesEnabled($"Sent {item.DisplayName} to the shipping bin");
-        }
-
-        private static void AddItemToPlayerShippingBin(Item item)
-        {
-            Game1.getFarm().getShippingBin(Game1.player).Add(item);
-        }
-
-        private static void RemoveItemFromPlayerInventory(Item item)
-        {
-            Game1.player.removeItemFromInventory(item);
-        }
-
-        private static Item GetHeldItem()
-        {
-            Item heldItem = Game1.player.CurrentItem;
-
-            return heldItem;
-        }
-
-        private Item GetHoveredItem()
-        {
-            IClickableMenu currentMenu = (Game1.activeClickableMenu as GameMenu)?.GetCurrentPage() ?? Game1.activeClickableMenu;
-            Item currentItem = null;
-
-            switch (currentMenu)
-            {
-                // Chests
-                case MenuWithInventory menu:
-                    currentItem = Game1.player.CursorSlotItem ?? menu.heldItem ?? menu.hoveredItem;
-                    break;
-
-                case InventoryPage menu:
-                    currentItem = Game1.player.CursorSlotItem ?? this.Helper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
-                    break;
-
-                case ProfileMenu menu:
-                    currentItem = menu.hoveredItem;
-                    break;
-
-                default:
-                    string message = "No menu available!";
-
-                    this.Monitor.Log(message, LogLevel.Debug);
-
-                    SendHUDMessage(message);
-
-                    // currentItem = this.Helper.Reflection.GetField<Item>(currentMenu, "hoveredItem", required: false).GetValue();
-                    break;
-            }
-
-            return currentItem;
-        }
-
-        private void SendHUDMessageIfMessagesEnabled(string message, int type = HUDMessage.achievement_type)
-        {
-            if (this.Config.MessagesEnabled == true)
-                SendHUDMessage(message, type);
-        }
-
-        private static void SendHUDMessage(string message, int type = HUDMessage.error_type)
-        {
-            Game1.addHUDMessage(new HUDMessage(message, type));
+            this.Utils.SendHUDMessageIfMessagesEnabled($"Sent {item.DisplayName} to the shipping bin");
         }
     }
 }
