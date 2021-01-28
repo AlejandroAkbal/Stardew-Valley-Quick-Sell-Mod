@@ -7,10 +7,8 @@ namespace Quick_Sell
         // public KeybindList SellKey { get; set; } = KeybindList.ForSingle(SButton.MouseMiddle);
         public SButton SellKey { get; set; } = SButton.MouseMiddle;
 
-        public bool MessagesEnabled { get; set; } = true;
+        //public SButton ModifierKey { get; set; } = SButton.LeftShift;
 
-        public ModConfig()
-        {
-        }
+        public bool MessagesEnabled { get; set; } = true;
     }
 }
