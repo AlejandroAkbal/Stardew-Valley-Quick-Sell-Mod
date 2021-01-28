@@ -53,6 +53,13 @@ namespace Quick_Sell
                 return;
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+        private static Item GetHeldItem()
+        {
+            Item heldItem = Game1.player.CurrentItem;
+
+            return heldItem;
+        }
+
         private Item GetHoveredItem()
         {
             IClickableMenu currentMenu = (Game1.activeClickableMenu as GameMenu)?.GetCurrentPage() ?? Game1.activeClickableMenu;
