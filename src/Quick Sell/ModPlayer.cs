@@ -70,5 +70,20 @@ namespace Quick_Sell
 
             return currentItem;
         }
+
+        public bool CheckIfItemCanBeShipped(Item item)
+        {
+            if (this.Config.CheckIfItemCanBeShipped == true)
+            {
+                Object itemTmp = item as Object;
+
+                if (itemTmp == null || itemTmp.canBeShipped() == false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

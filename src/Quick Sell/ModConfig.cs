@@ -10,5 +10,7 @@ namespace Quick_Sell
         //public SButton ModifierKey { get; set; } = SButton.LeftShift;
 
         public bool MessagesEnabled { get; set; } = true;
+
+        public bool CheckIfItemCanBeShipped { get; set; } = true;
     }
 }

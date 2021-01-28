@@ -50,15 +50,18 @@ namespace Quick_Sell
 
         private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            var item = Player.GetHoveredItem() as Object;
+            Item item = Player.GetHoveredItem();
 
             if (item == null)
                 return;
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
 
-            if (item.canBeShipped() == false)
+            if (!this.Player.CheckIfItemCanBeShipped(item))
+            {
+                this.Monitor.Log("Item was null or couldn't be shipped.", LogLevel.Debug);
                 return;
+            }
 
             this.Player.AddItemToPlayerShippingBin(item);
 
