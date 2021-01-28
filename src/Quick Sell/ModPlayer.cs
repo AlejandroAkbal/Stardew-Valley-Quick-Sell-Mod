@@ -72,7 +72,7 @@ namespace Quick_Sell
 
         public bool CheckIfItemCanBeShipped(Item item)
         {
-            if (this.Config.CheckIfItemCanBeShipped == true)
+            if (this.Config.CheckIfItemsCanBeShipped == true)
             {
                 Object itemTmp = item as Object;
 

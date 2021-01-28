@@ -18,7 +18,7 @@ namespace Quick_Sell
 
         public void SendHUDMessageIfMessagesEnabled(string message, int type = HUDMessage.screenshot_type)
         {
-            if (this.Config.MessagesEnabled == true)
+            if (this.Config.EnableHUDMessages == true)
                 SendHUDMessage(message, type);
         }
     }
