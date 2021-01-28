@@ -24,20 +24,20 @@ namespace Quick_Sell
         {
             this.Config = this.Helper.ReadConfig<ModConfig>();
 
+            helper.Events.Input.ButtonPressed += this.OnSellButtonPressed;
+        }
 
-        /*********
-        ** Private methods
-        *********/
-        /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
+        /// <summary>Raised after the player presses the quick sell button.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
-        private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
+        private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            // ignore if player hasn't loaded a save yet
             if (!Context.IsWorldReady)
                 return;
 
-            // print button presses to the console window
+            if (e.Button != this.Config.SellKey)
+                return;
+
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
         }
     }
