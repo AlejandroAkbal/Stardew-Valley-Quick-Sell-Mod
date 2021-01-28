@@ -48,9 +48,43 @@ namespace Quick_Sell
         private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
         {
             Item item = GetHoveredItem();
+
+            if (item == null)
                 return;
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+        private Item GetHoveredItem()
+        {
+            IClickableMenu currentMenu = (Game1.activeClickableMenu as GameMenu)?.GetCurrentPage() ?? Game1.activeClickableMenu;
+            Item currentItem = null;
+
+            switch (currentMenu)
+            {
+                // Chests
+                case MenuWithInventory menu:
+                    currentItem = Game1.player.CursorSlotItem ?? menu.heldItem ?? menu.hoveredItem;
+                    break;
+
+                case InventoryPage menu:
+                    currentItem = Game1.player.CursorSlotItem ?? this.Helper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
+                    break;
+
+                case ProfileMenu menu:
+                    currentItem = menu.hoveredItem;
+                    break;
+
+                default:
+                    string message = "No menu available!";
+
+                    this.Monitor.Log(message, LogLevel.Debug);
+
+                    SendHUDMessage(message);
+
+                    // currentItem = this.Helper.Reflection.GetField<Item>(currentMenu, "hoveredItem", required: false).GetValue();
+                    break;
+            }
+
+            return currentItem;
         }
         }
     }
