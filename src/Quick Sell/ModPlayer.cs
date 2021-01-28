@@ -10,7 +10,7 @@ namespace Quick_Sell
         private readonly ModConfig Config;
         private readonly IMonitor Monitor;
 
-        private ModUtils Utils;
+        private readonly ModUtils Utils;
 
         public ModPlayer(IModHelper helper, ModConfig config, IMonitor monitor)
         {
