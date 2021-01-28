@@ -93,6 +93,16 @@ namespace Quick_Sell
 
             return currentItem;
         }
+
+        private void SendHUDMessageIfMessagesEnabled(string message, int type = HUDMessage.achievement_type)
+        {
+            if (this.Config.MessagesEnabled == true)
+                SendHUDMessage(message, type);
+        }
+
+        private static void SendHUDMessage(string message, int type = HUDMessage.error_type)
+        {
+            Game1.addHUDMessage(new HUDMessage(message, type));
         }
     }
 }
