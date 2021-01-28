@@ -62,6 +62,8 @@ namespace Quick_Sell
             this.Player.RemoveItemFromPlayerInventory(item);
 
             this.Utils.SendHUDMessageIfMessagesEnabled($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
+
+            Game1.playSound(Game1.soundBank.GetCue("sell").Name);
         }
     }
 }
