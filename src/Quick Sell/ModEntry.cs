@@ -14,6 +14,8 @@ namespace Quick_Sell
         /// <summary>The mod configuration from the player.</summary>
         private ModConfig Config;
 
+        private ModLogger Logger;
+
         private ModUtils Utils;
         private ModPlayer Player;
 
@@ -27,8 +29,10 @@ namespace Quick_Sell
         {
             this.Config = this.Helper.ReadConfig<ModConfig>();
 
+            this.Logger = new ModLogger(this.Monitor);
+
             this.Utils = new ModUtils(this.Config);
-            this.Player = new ModPlayer(helper, this.Config, this.Monitor);
+            this.Player = new ModPlayer(helper, this.Config, this.Logger, this.Utils);
 
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
         }
@@ -54,15 +58,15 @@ namespace Quick_Sell
 
             if (item == null)
             {
-                this.Monitor.Log("Item was null.", LogLevel.Debug);
+                this.Logger.Debug("Item was null.");
                 return;
             }
 
-            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
+            this.Logger.Debug($"{Game1.player.Name} pressed {e.Button} and has selected {item}.");
 
             if (!this.Player.CheckIfItemCanBeShipped(item))
             {
-                this.Monitor.Log("Item was null or couldn't be shipped.", LogLevel.Debug);
+                this.Logger.Debug("Item was null or couldn't be shipped.");
                 return;
             }
 

@@ -8,17 +8,18 @@ namespace Quick_Sell
     {
         private readonly IModHelper Helper;
         private readonly ModConfig Config;
-        private readonly IMonitor Monitor;
 
         private readonly ModUtils Utils;
+        private ModLogger Logger;
 
-        public ModPlayer(IModHelper helper, ModConfig config, IMonitor monitor)
+        public ModPlayer(IModHelper helper, ModConfig config, ModLogger logger, ModUtils utils)
         {
             this.Config = config;
             this.Helper = helper;
-            this.Monitor = monitor;
 
-            this.Utils = new ModUtils(this.Config);
+            this.Logger = logger;
+
+            this.Utils = utils;
         }
 
         public void RemoveItemFromPlayerInventory(Item item)
@@ -61,10 +62,8 @@ namespace Quick_Sell
                 default:
                     string message = "You are not in the inventory!";
 
-                    this.Monitor.Log(message, LogLevel.Debug);
-
+                    this.Logger.Debug(message);
                     this.Utils.SendHUDMessage(message);
-
                     break;
             }
 
