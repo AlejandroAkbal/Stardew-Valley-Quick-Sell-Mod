@@ -53,7 +53,10 @@ namespace Quick_Sell
             Item item = Player.GetHoveredItem();
 
             if (item == null)
+            {
+                this.Monitor.Log("Item was null.", LogLevel.Debug);
                 return;
+            }
 
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button} and has selected {item}.", LogLevel.Debug);
 
