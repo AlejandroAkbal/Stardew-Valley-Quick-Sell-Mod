@@ -1,11 +1,13 @@
 # Stardew Valley Quick Sell Mod
 
-Move any item into the Shipping Bin instantly.
+Move any item into the Shipping Bin instantly with the press of a button.
+
+![Header](resources/img/Shipping_Bin_Header.png)
 
 ## Install
 
-1. [Install the latest version of SMAPI](https://smapi.io).
-1. Download this mod and unzip it into [font=Courier New]Stardew Valley/Mods[/font].
+1. Install the [latest version of SMAPI](https://smapi.io).
+1. Download this mod and unzip it into `Stardew Valley/Mods`.
 1. Run the game using SMAPI.
 
 ## How to use
@@ -17,17 +19,17 @@ This mod is configurable, check `Stardew Valley/Mods/Quick Sell/config.json` for
 ## Compatibility
 
 - Works with Stardew Valley 1.3 beta on Linux/Mac/Windows.
-- Works in single player and multiplayer. If there are multiplayer limitations, explain them here.
+- Works in single player and multiplayer.
+- Works with a controller.
 
 ## Known bugs
 
-- Can duplicate items.
-- Doesn't work on any menu that is not the inventory.
+- Only works on the inventory menu.
 
 ## See also
 
-Check the source code.
+This mod is open source and licensed under MIT, check it out.
 
-- Official discussion thread
 - Release notes
+- [Official discussion thread](https://www.nexusmods.com/stardewvalley/mods/7854?tab=posts)
 - [Source code](https://github.com/AlejandroAkbal/Stardew-Valley-Quick-Sell-Mod)
