@@ -11,15 +11,10 @@ namespace Quick_Sell
             this.Config = config;
         }
 
-        public void SendHUDMessage(string message, int type = HUDMessage.error_type)
-        {
-            Game1.addHUDMessage(new HUDMessage(message, type));
-        }
-
-        public void SendHUDMessageIfMessagesEnabled(string message, int type = HUDMessage.screenshot_type)
+        public void SendHUDMessage(string message, int type = HUDMessage.newQuest_type)
         {
             if (this.Config.EnableHUDMessages == true)
-                SendHUDMessage(message, type);
+                Game1.addHUDMessage(new HUDMessage(message, type));
         }
     }
 }

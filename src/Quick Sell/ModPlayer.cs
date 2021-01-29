@@ -63,7 +63,7 @@ namespace Quick_Sell
                     string message = "You are not in the inventory!";
 
                     this.Logger.Debug(message);
-                    this.Utils.SendHUDMessage(message);
+                    this.Utils.SendHUDMessage(message, HUDMessage.error_type);
                     break;
             }
 
