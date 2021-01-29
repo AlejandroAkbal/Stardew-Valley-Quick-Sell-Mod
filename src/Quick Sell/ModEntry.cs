@@ -54,7 +54,7 @@ namespace Quick_Sell
 
         private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            Item item = Player.GetHoveredItem();
+            Item item = this.Player.GetHoveredItem();
 
             if (item == null)
             {
