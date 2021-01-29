@@ -11,6 +11,6 @@ namespace Quick_Sell
 
         public bool CheckIfItemsCanBeShipped { get; set; } = true;
 
-        public bool EnableHUDMessages { get; set; } = true;
+        public bool EnableHUDMessages { get; set; } = false;
     }
 }
