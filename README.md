@@ -33,3 +33,13 @@ This mod is open source and licensed under MIT, check it out.
 - Release notes
 - [Official discussion thread](https://www.nexusmods.com/stardewvalley/mods/7854?tab=posts)
 - [Source code](https://github.com/AlejandroAkbal/Stardew-Valley-Quick-Sell-Mod)
+
+## Support
+
+If you have found this mod useful, please endorse it!
+
+Or support me financially.
+
+- [GitHub Sponsors](https://redirect.akbal.dev/github/sponsor)
+- [LiberaPay](https://redirect.akbal.dev/liberapay)
+- [PayPal](https://redirect.akbal.dev/paypal)
