@@ -6,14 +6,14 @@ namespace Quick_Sell
     {
         private static readonly IMonitor Monitor = ModEntry.Instance.Monitor;
 
-        public static void Debug(string message)
+        public static void Trace(string message)
         {
-            Monitor.Log(message, LogLevel.Debug);
+            Monitor.Log(message, LogLevel.Trace);
         }
 
-        public static void Warn(string message)
+        public static void Info(string message)
         {
-            Monitor.Log(message, LogLevel.Warn);
+            Monitor.Log(message, LogLevel.Info);
         }
     }
 }

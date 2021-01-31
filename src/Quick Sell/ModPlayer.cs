@@ -39,7 +39,7 @@ namespace Quick_Sell
                 default:
                     string message = "You are not in the inventory!";
 
-                    ModLogger.Debug(message);
+                    ModLogger.Trace(message);
                     ModUtils.SendHUDMessage(message, HUDMessage.error_type);
                     break;
             }

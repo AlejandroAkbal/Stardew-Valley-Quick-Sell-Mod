@@ -44,15 +44,15 @@ namespace Quick_Sell
 
             if (item == null)
             {
-                ModLogger.Debug("Item was null.");
+                ModLogger.Trace("Item was null.");
                 return;
             }
 
-            ModLogger.Debug($"{Game1.player.Name} pressed {e.Button} and has selected {item}.");
+            ModLogger.Trace($"{Game1.player.Name} pressed {e.Button} and has selected {item}.");
 
             if (Config.CheckIfItemsCanBeShipped == true && ModPlayer.CheckIfItemCanBeShipped(item) == false)
             {
-                ModLogger.Debug("Item was null or couldn't be shipped.");
+                ModLogger.Info("Item couldn't be shipped.");
                 return;
             }
 
