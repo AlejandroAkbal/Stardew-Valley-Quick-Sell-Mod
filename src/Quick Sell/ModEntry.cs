@@ -52,7 +52,7 @@ namespace Quick_Sell
 
             if (Config.CheckIfItemsCanBeShipped == true && ModPlayer.CheckIfItemCanBeShipped(item) == false)
             {
-                ModLogger.Info("Item couldn't be shipped.");
+                ModLogger.Info("Item can't be shipped.");
                 return;
             }
 
