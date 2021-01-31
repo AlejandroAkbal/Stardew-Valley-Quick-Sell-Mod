@@ -56,7 +56,7 @@ namespace Quick_Sell
                 return;
             }
 
-            ModPlayer.AddItemToPlayerShippingBin(item);
+            ModPlayer.AddItemToShippingBin(item);
 
             ModPlayer.RemoveItemFromPlayerInventory(item);
 

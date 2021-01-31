@@ -11,7 +11,7 @@ namespace Quick_Sell
             Game1.player.removeItemFromInventory(item);
         }
 
-        public static void AddItemToPlayerShippingBin(Item item)
+        public static void AddItemToShippingBin(Item item)
         {
             Game1.getFarm().getShippingBin(Game1.player).Add(item);
         }
