@@ -49,14 +49,11 @@ namespace Quick_Sell
 
         public static bool CheckIfItemCanBeShipped(Item item)
         {
-            if (ModEntry.Config.CheckIfItemsCanBeShipped == true)
-            {
-                Object itemTmp = item as Object;
+            Object itemAsObject = item as Object;
 
-                if (itemTmp == null || itemTmp.canBeShipped() == false)
-                {
-                    return false;
-                }
+            if (itemAsObject == null || itemAsObject.canBeShipped() == false)
+            {
+                return false;
             }
 
             return true;

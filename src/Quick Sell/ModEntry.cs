@@ -50,7 +50,7 @@ namespace Quick_Sell
 
             ModLogger.Debug($"{Game1.player.Name} pressed {e.Button} and has selected {item}.");
 
-            if (!ModPlayer.CheckIfItemCanBeShipped(item))
+            if (Config.CheckIfItemsCanBeShipped == true && ModPlayer.CheckIfItemCanBeShipped(item) == false)
             {
                 ModLogger.Debug("Item was null or couldn't be shipped.");
                 return;
