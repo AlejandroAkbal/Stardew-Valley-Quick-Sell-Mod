@@ -16,6 +16,13 @@ namespace Quick_Sell
             Game1.getFarm().getShippingBin(Game1.player).Add(item);
         }
 
+        public static void OrganizeShippingBin()
+        {
+            var shippingBinItems = Game1.getFarm().getShippingBin(Game1.player);
+
+            ItemGrabMenu.organizeItemsInList(shippingBinItems);
+        }
+
         public static Item GetHoveredItem()
         {
             IClickableMenu currentMenu = (Game1.activeClickableMenu as GameMenu)?.GetCurrentPage() ?? Game1.activeClickableMenu;
