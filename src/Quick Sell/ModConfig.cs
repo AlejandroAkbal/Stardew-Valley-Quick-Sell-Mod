@@ -1,11 +1,11 @@
 ﻿using StardewModdingAPI;
+using StardewModdingAPI.Utilities;
 
 namespace Quick_Sell
 {
     public class ModConfig
     {
-        // public KeybindList SellKey { get; set; } = KeybindList.ForSingle(SButton.MouseMiddle);
-        public SButton SellKey { get; set; } = SButton.MouseMiddle;
+        public KeybindList SellKey { get; set; } = KeybindList.Parse("MouseMiddle, LeftStick");
 
         //public SButton ModifierKey { get; set; } = SButton.LeftShift;
 

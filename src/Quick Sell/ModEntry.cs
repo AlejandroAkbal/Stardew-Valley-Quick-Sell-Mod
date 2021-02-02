@@ -20,7 +20,7 @@ namespace Quick_Sell
 
             Config = Helper.ReadConfig<ModConfig>();
 
-            helper.Events.Input.ButtonPressed += this.OnButtonPressed;
+            helper.Events.Input.ButtonPressed += OnButtonPressed;
         }
 
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
@@ -34,8 +34,8 @@ namespace Quick_Sell
             //if (!Game1.displayHUD)
             //    return;
 
-            if (e.Button == Config.SellKey)
-                this.OnSellButtonPressed(sender, e);
+            if (Config.SellKey.JustPressed())
+                OnSellButtonPressed(sender, e);
         }
 
         private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
