@@ -8,7 +8,7 @@ namespace Quick_Sell
     {
         public static Mod Instance;
 
-        public static IModHelper Helper;
+        public static IModHelper CustomHelper;
 
         public static ModConfig Config;
 
@@ -16,9 +16,9 @@ namespace Quick_Sell
         {
             Instance = this;
 
-            Helper = helper;
+            CustomHelper = helper;
 
-            Config = Helper.ReadConfig<ModConfig>();
+            Config = CustomHelper.ReadConfig<ModConfig>();
 
             helper.Events.Input.ButtonPressed += OnButtonPressed;
         }

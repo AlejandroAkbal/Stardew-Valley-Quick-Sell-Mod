@@ -40,7 +40,7 @@ namespace Quick_Sell
                 //    break;
 
                 case InventoryPage menu:
-                    currentItem = Game1.player.CursorSlotItem ?? ModEntry.Helper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
+                    currentItem = Game1.player.CursorSlotItem ?? ModEntry.CustomHelper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
                     break;
 
                 default:
