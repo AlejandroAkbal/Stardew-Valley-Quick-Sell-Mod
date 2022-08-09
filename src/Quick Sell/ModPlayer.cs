@@ -13,7 +13,12 @@ namespace Quick_Sell
 
         public static void AddItemToShippingBin(Item item)
         {
-            Game1.getFarm().getShippingBin(Game1.player).Add(item);
+            Farmer player = Game1.player;
+            Farm farm = Game1.getFarm();
+
+            farm.getShippingBin(player).Add(item);
+
+            farm.lastItemShipped = item;
         }
 
         public static void OrganizeShippingBin()
