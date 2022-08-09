@@ -62,7 +62,7 @@ namespace Quick_Sell
 
             ModPlayer.RemoveItemFromPlayerInventory(item);
 
-            ModUtils.SendHUDMessage($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
+            ModUtils.SendHUDMessageRespectingConfig($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
 
             Game1.playSound("Ship");
         }
