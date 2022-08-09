@@ -1,4 +1,5 @@
-﻿using StardewModdingAPI;
+﻿using GenericModConfigMenu;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 
@@ -20,7 +21,42 @@ namespace Quick_Sell
 
             Config = CustomHelper.ReadConfig<ModConfig>();
 
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Input.ButtonPressed += OnButtonPressed;
+        }
+
+        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            // Get Generic Mod Config Menu's API (if it's installed)
+            var genericModConfigMenu = CustomHelper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+
+            if (genericModConfigMenu is null)
+                return;
+
+            // Register mod
+            genericModConfigMenu.Register(
+                mod: ModManifest,
+                reset: () => Config = new ModConfig(),
+                save: () => CustomHelper.WriteConfig(Config)
+            );
+
+            // Add some config options
+
+            genericModConfigMenu.AddBoolOption(
+                mod: this.ModManifest,
+                name: () => "Check If Items Can Be Shipped",
+                tooltip: () => null,
+                getValue: () => Config.CheckIfItemsCanBeShipped,
+                setValue: value => Config.CheckIfItemsCanBeShipped = value
+            );
+
+            genericModConfigMenu.AddBoolOption(
+                mod: this.ModManifest,
+                name: () => "Enable HUD Messages",
+                tooltip: () => null,
+                getValue: () => Config.EnableHUDMessages,
+                setValue: value => Config.EnableHUDMessages = value
+            );
         }
 
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
