@@ -1,4 +1,4 @@
-﻿using GenericModConfigMenu;
+using GenericModConfigMenu;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -44,24 +44,24 @@ namespace Quick_Sell
 
             genericModConfigMenu.AddKeybindList(
                 mod: this.ModManifest,
-                name: () => "Sell Key",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_sellkey_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_sellkey_tooltip"),
                 getValue: () => Config.SellKey,
                 setValue: value => Config.SellKey = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Check If Items Can Be Shipped",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_itemship_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_itemship_tooltip"),
                 getValue: () => Config.CheckIfItemsCanBeShipped,
                 setValue: value => Config.CheckIfItemsCanBeShipped = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Enable HUD Messages",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_hudmsg_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_hudmsg_tooltip"),
                 getValue: () => Config.EnableHUDMessages,
                 setValue: value => Config.EnableHUDMessages = value
             );
