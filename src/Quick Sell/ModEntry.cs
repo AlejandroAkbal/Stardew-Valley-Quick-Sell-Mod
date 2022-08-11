@@ -22,7 +22,7 @@ namespace Quick_Sell
             Config = CustomHelper.ReadConfig<ModConfig>();
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-            helper.Events.Input.ButtonPressed += OnButtonPressed;
+            helper.Events.Input.ButtonsChanged += OnButtonsChanged;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -59,7 +59,7 @@ namespace Quick_Sell
             );
         }
 
-        private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
+        private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
         {
             if (!Context.IsWorldReady)
                 return;
@@ -74,7 +74,7 @@ namespace Quick_Sell
                 OnSellButtonPressed(sender, e);
         }
 
-        private void OnSellButtonPressed(object sender, ButtonPressedEventArgs e)
+        private void OnSellButtonPressed(object sender, ButtonsChangedEventArgs e)
         {
             Item item = ModPlayer.GetHoveredItem();
 
@@ -84,7 +84,7 @@ namespace Quick_Sell
                 return;
             }
 
-            ModLogger.Trace($"{Game1.player.Name} pressed {e.Button} and has selected {item}.");
+            ModLogger.Trace($"{Game1.player.Name} pressed {e.ToString()} and has selected {item}.");
 
             if (Config.CheckIfItemsCanBeShipped == true && ModPlayer.CheckIfItemCanBeShipped(item) == false)
             {
