@@ -92,11 +92,8 @@ namespace Quick_Sell
                 return;
             }
 
-            ModPlayer.AddItemToShippingBin(item);
-
-            ModPlayer.OrganizeShippingBin();
-
-            ModPlayer.RemoveItemFromPlayerInventory(item);
+            // Ship item
+            Game1.getFarm().shipItem(item, Game1.player);
 
             ModUtils.SendHUDMessageRespectingConfig($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
 

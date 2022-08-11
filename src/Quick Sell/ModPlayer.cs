@@ -6,28 +6,6 @@ namespace Quick_Sell
 {
     internal class ModPlayer
     {
-        public static void RemoveItemFromPlayerInventory(Item item)
-        {
-            Game1.player.removeItemFromInventory(item);
-        }
-
-        public static void AddItemToShippingBin(Item item)
-        {
-            Farmer player = Game1.player;
-            Farm farm = Game1.getFarm();
-
-            farm.getShippingBin(player).Add(item);
-
-            farm.lastItemShipped = item;
-        }
-
-        public static void OrganizeShippingBin()
-        {
-            var shippingBinItems = Game1.getFarm().getShippingBin(Game1.player);
-
-            ItemGrabMenu.organizeItemsInList(shippingBinItems);
-        }
-
         public static Item GetHoveredItem()
         {
             IClickableMenu currentMenu = (Game1.activeClickableMenu as GameMenu)?.GetCurrentPage() ?? Game1.activeClickableMenu;
