@@ -42,6 +42,14 @@ namespace Quick_Sell
 
             // Add some config options
 
+            genericModConfigMenu.AddKeybindList(
+                mod: this.ModManifest,
+                name: () => "Sell Key",
+                tooltip: () => null,
+                getValue: () => Config.SellKey,
+                setValue: value => Config.SellKey = value
+            );
+
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
                 name: () => "Check If Items Can Be Shipped",
