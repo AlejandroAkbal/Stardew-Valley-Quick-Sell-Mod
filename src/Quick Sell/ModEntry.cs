@@ -1,4 +1,4 @@
-﻿using GenericModConfigMenu;
+using GenericModConfigMenu;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -9,17 +9,13 @@ namespace Quick_Sell
     {
         public static Mod Instance;
 
-        public static IModHelper CustomHelper;
-
         public static ModConfig Config;
 
         public override void Entry(IModHelper helper)
         {
             Instance = this;
 
-            CustomHelper = helper;
-
-            Config = CustomHelper.ReadConfig<ModConfig>();
+            Config = Helper.ReadConfig<ModConfig>();
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Input.ButtonsChanged += OnButtonsChanged;
@@ -28,7 +24,7 @@ namespace Quick_Sell
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             // Get Generic Mod Config Menu's API (if it's installed)
-            var genericModConfigMenu = CustomHelper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+            var genericModConfigMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
 
             if (genericModConfigMenu is null)
                 return;
@@ -37,31 +33,30 @@ namespace Quick_Sell
             genericModConfigMenu.Register(
                 mod: ModManifest,
                 reset: () => Config = new ModConfig(),
-                save: () => CustomHelper.WriteConfig(Config)
+                save: () => Helper.WriteConfig(Config)
             );
 
             // Add some config options
-
             genericModConfigMenu.AddKeybindList(
                 mod: this.ModManifest,
-                name: () => "Sell Key",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_SellKey_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_SellKey_tooltip"),
                 getValue: () => Config.SellKey,
                 setValue: value => Config.SellKey = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Check If Items Can Be Shipped",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_CheckIfItemsCanBeShipped_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_CheckIfItemsCanBeShipped_tooltip"),
                 getValue: () => Config.CheckIfItemsCanBeShipped,
                 setValue: value => Config.CheckIfItemsCanBeShipped = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => "Enable HUD Messages",
-                tooltip: () => null,
+                name: () => Helper.Translation.Get("config.qs_EnableHUDMessages_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_EnableHUDMessages_tooltip"),
                 getValue: () => Config.EnableHUDMessages,
                 setValue: value => Config.EnableHUDMessages = value
             );
@@ -103,7 +98,7 @@ namespace Quick_Sell
             // Ship item
             Game1.getFarm().shipItem(item, Game1.player);
 
-            ModUtils.SendHUDMessageRespectingConfig($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
+            ModUtils.SendHUDMessageRespectingConfig(Helper.Translation.Get("messages.qs_ItemShipped", new { itemStack = item.Stack, itemName = item.DisplayName }));
 
             Game1.playSound("Ship");
         }
