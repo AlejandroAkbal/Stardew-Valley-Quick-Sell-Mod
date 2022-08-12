@@ -9,17 +9,13 @@ namespace Quick_Sell
     {
         public static Mod Instance;
 
-        public static IModHelper CustomHelper;
-
         public static ModConfig Config;
 
         public override void Entry(IModHelper helper)
         {
             Instance = this;
 
-            CustomHelper = helper;
-
-            Config = CustomHelper.ReadConfig<ModConfig>();
+            Config = Helper.ReadConfig<ModConfig>();
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Input.ButtonsChanged += OnButtonsChanged;
@@ -28,7 +24,7 @@ namespace Quick_Sell
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             // Get Generic Mod Config Menu's API (if it's installed)
-            var genericModConfigMenu = CustomHelper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+            var genericModConfigMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
 
             if (genericModConfigMenu is null)
                 return;
@@ -37,7 +33,7 @@ namespace Quick_Sell
             genericModConfigMenu.Register(
                 mod: ModManifest,
                 reset: () => Config = new ModConfig(),
-                save: () => CustomHelper.WriteConfig(Config)
+                save: () => Helper.WriteConfig(Config)
             );
 
             // Add some config options
