@@ -1,5 +1,4 @@
-﻿using StardewModdingAPI;
-using StardewValley;
+﻿using StardewValley;
 using StardewValley.Menus;
 
 namespace Quick_Sell
@@ -23,7 +22,7 @@ namespace Quick_Sell
                 //    break;
 
                 case InventoryPage menu:
-                    currentItem = Game1.player.CursorSlotItem ?? ModEntry.CustomHelper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
+                    currentItem = Game1.player.CursorSlotItem ?? ModEntry.Instance.Helper.Reflection.GetField<Item>(menu, "hoveredItem").GetValue();
                     break;
 
                 default:
