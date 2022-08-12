@@ -1,5 +1,5 @@
 {
-    "messages.qs_ItemShipped": "Enviado {{itemStack}} {{itemName}} al contenedor de envío!",
+    "messages.qs_ItemShipped": "¡Enviado {{itemStack}} {{itemName}} al contenedor de envío!",
 
     "config.qs_SellKey_name": "Tecla de envío",
     "config.qs_SellKey_tooltip": "Qué tecla(s) utilizar para enviar artículos al contenedor de envío.",
