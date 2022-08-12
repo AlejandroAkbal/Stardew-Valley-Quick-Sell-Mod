@@ -41,27 +41,26 @@ namespace Quick_Sell
             );
 
             // Add some config options
-
             genericModConfigMenu.AddKeybindList(
                 mod: this.ModManifest,
-                name: () => Helper.Translation.Get("config.qs_sellkey_name"),
-                tooltip: () => Helper.Translation.Get("config.qs_sellkey_tooltip"),
+                name: () => Helper.Translation.Get("config.qs_SellKey_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_SellKey_tooltip"),
                 getValue: () => Config.SellKey,
                 setValue: value => Config.SellKey = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => Helper.Translation.Get("config.qs_itemship_name"),
-                tooltip: () => Helper.Translation.Get("config.qs_itemship_tooltip"),
+                name: () => Helper.Translation.Get("config.qs_CheckIfItemsCanBeShipped_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_CheckIfItemsCanBeShipped_tooltip"),
                 getValue: () => Config.CheckIfItemsCanBeShipped,
                 setValue: value => Config.CheckIfItemsCanBeShipped = value
             );
 
             genericModConfigMenu.AddBoolOption(
                 mod: this.ModManifest,
-                name: () => Helper.Translation.Get("config.qs_hudmsg_name"),
-                tooltip: () => Helper.Translation.Get("config.qs_hudmsg_tooltip"),
+                name: () => Helper.Translation.Get("config.qs_EnableHUDMessages_name"),
+                tooltip: () => Helper.Translation.Get("config.qs_EnableHUDMessages_tooltip"),
                 getValue: () => Config.EnableHUDMessages,
                 setValue: value => Config.EnableHUDMessages = value
             );
@@ -103,7 +102,7 @@ namespace Quick_Sell
             // Ship item
             Game1.getFarm().shipItem(item, Game1.player);
 
-            ModUtils.SendHUDMessageRespectingConfig($"Sent {item.Stack} {item.DisplayName} to the Shipping Bin!");
+            ModUtils.SendHUDMessageRespectingConfig(Helper.Translation.Get("messages.qs_ItemShipped", new { itemStack = item.Stack, itemName = item.DisplayName }));
 
             Game1.playSound("Ship");
         }
